@@ -1,4 +1,4 @@
-
+I'm using this template as a base for my project.
 ==================================================================================================
 
 KARDS is a modern and clean personal vCard website template. It has many cool features found
