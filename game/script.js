@@ -17,7 +17,7 @@ let leftPressed = false;
 
 // Brick variables
 let brickRowCount = 3;
-let brickColumnCount = 5;
+let brickColumnCount = 9;
 let brickWidth = 75;
 let brickHeight = 20;
 let brickPadding = 10;
@@ -186,21 +186,58 @@ function handleGameOver() {
   resetGame();
 }
 
+// function resetGame() {
+//   score = 0;
+//   x = canvas.width / 2;
+//   y = canvas.height - 30;
+//   dx = 2 + level; // Increase speed with each level
+//   dy = -2 - level;
+//   paddleX = (canvas.width - paddleWidth) / 2;
+
+//   // Reset bricks
+//   for (let c = 0; c < brickColumnCount; c++) {
+//     for (let r = 0; r < brickRowCount; r++) {
+//       bricks[c][r].status = 1;
+//     }
+//   }
+
+//   draw();
+// }
+
 function resetGame() {
+  // Reset variables to their initial values, including level:
   score = 0;
   x = canvas.width / 2;
   y = canvas.height - 30;
-  dx = 2 + level; // Increase speed with each level
-  dy = -2 - level;
+  dx = 2; // Initial speed for level 1
+  dy = -2;
   paddleX = (canvas.width - paddleWidth) / 2;
+  //level = 1; // Reset to the first level
 
-  // Reset bricks
+  // Reset bricks:
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       bricks[c][r].status = 1;
     }
   }
 
+  // Redraw the game elements:
+  draw();
+}
+
+function increaseLevel() {
+  level++; // Increment the level
+  dx += 1; // Increase speed with each level
+  dy -= 1;
+
+  // Reset bricks for the new level:
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      bricks[c][r].status = 1;
+    }
+  }
+
+  // Redraw the game elements:
   draw();
 }
 
